@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+
+<head><title>MY PERSONAL WEBSITE</title></head>
+<link rel="icon" href="img/Izzati.jpg" type="image/gif" sizes="16x16">
+<header>
+<body background="img/bg2.jpg">
+<a href="index.html">
+<center>
+<img src="img/logo.jpg">
+</center>
+</a>
+</header>
+<hr>
+<center>
+
+<nav>
+<ul>
+<li><a href="index.html">Home Page</a></li>
+<li><a href="biodata.html">Biodata</a></li>
+<li><a href="experience.html">Experience</a></li>
+<li><a href="education.html">Education</a></li>
+<li><a href="family.html">Family</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contactme.html">Contact Me</a></li>
+</ul>
+</nav>
+</center>
+
+<style>
+{
+	box-sizing:border-box;
+}
+body{
+	margin:0;
+}
+nav{
+	background:#594848;
+	width:100%;
+	overflow:auto;
+}
+ul{
+	margin:0; 
+	padding:0;
+	list-style:none; 
+}
+li{
+	display:inline-block;
+}	
+nav a{
+	width:120px;
+	display:block;
+	text-decoration:none;
+	text-align:center;
+	background:#594848;
+	font-size:17px;
+	color:white; 
+	padding:20px 10px;
+	font-family:Arial;
+}
+nav a:hover{
+	background:skyblue;
+	color:black;
+} 
+div {
+	background-color:lightblue;
+	width:1310px;
+	border: 7px solid black;
+	padding: 5px;	
+	margin: 10px;
+	
+	}
+</style>
+<hr>
+<strong><marquee>WELCOME TO IZZATI AZLEE'S WEBSITE</marquee></strong>
+
+<canvas id="canvas" width="100" height="100"
+style="background-color:#pink">
+</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+</script>
+</style>
+
+<center>
+<img src="img/gif2.gif" width="10%" height="10%">
+</center>
+
+<p><center><strong>
+My name is Nur Izzati binti Azlee and this is my profile !
+</p></strong>
+<img src="img/myself.jpg" width="15%" height="10%"
+title="This is me">
+</center>
+
+<br><center>
+<h3>Background Sound</h3>
+<embed src="mp/bgm1.mp3" autoplay="true"></embed>
+<br></center>
+
+<div>
+<center>
+<p>Name : Nur Izzati binti Azlee</p>
+<p>Age : 20 years</p>
+<p>Class : KIM1105C</p>
+<p>Program : Diploma in Information Management</p>
+<p>Course Name: Introduction to Web Content Management and Design</p>
+<p>Course Code : IMD311</p>
+<p>Purpose of this website : Assignment Purpose of Personal Website</p>
+<p>Prepared for : Sir Mohd Firdaus bin Mohd Helmi</p>
+</center>
+</div>
+
+<p><strong><center>Please visit me again!</strong></p></center>
+</body>
